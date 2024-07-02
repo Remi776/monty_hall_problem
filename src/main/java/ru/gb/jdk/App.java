@@ -63,13 +63,16 @@ public class App {
         int goatDoor = selectGoatDoor(carDoor, playerChoice);
 
         boolean switchChoice = ThreadLocalRandom.current().nextBoolean();
+        int switchPlayerChoice = 0;
         if (switchChoice) {
-            playerChoice = switchPlayerChoice(playerChoice, goatDoor);
+            switchPlayerChoice = switchPlayerChoice(playerChoice, goatDoor);
         }
 
         // Сохранение ходов игры.
-        saveGameMove(moves, gameNumber, playerChoice, goatDoor, switchChoice ? playerChoice : 0);
-        return playerChoice == carDoor;
+        saveGameMove(moves, gameNumber, playerChoice, goatDoor, switchChoice ? switchPlayerChoice : 0);
+
+        if (switchPlayerChoice == carDoor) return true;
+        else return playerChoice == carDoor;
     }
 
     private static int selectGoatDoor(int carDoor, int playerChoice) {
