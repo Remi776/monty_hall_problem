@@ -39,7 +39,7 @@ public class App {
 
                 logger.info(explanation + (win ? " - Player won!" : " - Player lost!"));
             } else {
-                logger.error("Ошибка при обработке хода игры " + i);
+                logger.error("Error processing the game progress " + i);
             }
         }
     }
